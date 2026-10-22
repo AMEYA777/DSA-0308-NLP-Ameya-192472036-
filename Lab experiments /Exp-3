@@ -1,0 +1,17 @@
+import nltk
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+ps = PorterStemmer()
+lm = WordNetLemmatizer()
+
+sentence = input("Enter a sentence: ")
+words = nltk.word_tokenize(sentence)
+
+print("\nWord".ljust(20), "Stem".ljust(20), "Lemma")
+print("-" * 55)
+
+for word in words:
+    if word.isalpha():
+        stem = ps.stem(word)
+        lemma = lm.lemmatize(word.lower(), pos="v")
+        print(word.ljust(20), stem.ljust(20), lemma)
