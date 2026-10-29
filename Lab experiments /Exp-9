@@ -1,0 +1,20 @@
+
+import re
+
+words = ["playing", "quickly", "beautiful", "book"]
+
+patterns = [
+    (r".*ing$", "Verb"),
+    (r".*ly$", "Adverb"),
+    (r".*ful$", "Adjective"),
+    (r".*", "Noun")
+]
+
+print("Word\tPOS Tag")
+
+for word in words:
+    for pattern, tag in patterns:
+        if re.fullmatch(pattern, word):
+            print(word, "\t", tag)
+            break
+
