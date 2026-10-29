@@ -1,0 +1,26 @@
+
+import random
+
+text = "I like Python and I like programming"
+words = text.split()
+
+bigrams = list(zip(words, words[1:]))
+
+print("Bigram Model:")
+print(bigrams)
+
+print("\nGenerated Text:")
+
+generated = [words[0]]
+
+for i in range(5):
+    current = generated[-1]
+    next_words = [b[1] for b in bigrams if b[0] == current]
+
+    if not next_words:
+        break
+
+    generated.append(random.choice(next_words))
+
+print(" ".join(generated))
+
