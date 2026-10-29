@@ -1,0 +1,16 @@
+
+words = ["The", "dogs", "are", "playing"]
+
+tags = ["Noun", "Noun", "Noun", "Noun"]
+
+print("Before Transformation:")
+print(list(zip(words, tags)))
+
+# Transformation rule: words ending in 'ing' are verbs
+for i, word in enumerate(words):
+    if word.endswith("ing"):
+        tags[i] = "Verb"
+
+print("\nAfter Transformation:")
+print(list(zip(words, tags)))
+
