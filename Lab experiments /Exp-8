@@ -1,0 +1,16 @@
+
+text = "Dogs bark loudly"
+words = text.split()
+
+probabilities = {
+    "Dogs": {"Noun": 0.9, "Verb": 0.1},
+    "bark": {"Noun": 0.3, "Verb": 0.7},
+    "loudly": {"Adverb": 0.95, "Adjective": 0.05}
+}
+
+print("Word\tPOS Tag")
+
+for word in words:
+    tag = max(probabilities[word], key=probabilities[word].get)
+    print(word, "\t", tag)
+
