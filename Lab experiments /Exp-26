@@ -1,0 +1,26 @@
+from transformers import pipeline
+
+print("ENGLISH TO FRENCH TRANSLATION")
+print("-----------------------------")
+
+translator = pipeline(
+    "translation_en_to_fr",
+    model="Helsinki-NLP/opus-mt-en-fr"
+)
+
+sentences = [
+    "Hello, how are you?",
+    "My name is Ravi.",
+    "I am a computer science student.",
+    "Artificial intelligence is interesting.",
+    "Python is easy to learn."
+]
+
+for sentence in sentences:
+
+    result = translator(sentence)
+
+    print("\nEnglish:", sentence)
+    print("French:", result[0]["translation_text"])
+
+print("\nTranslation Completed.")
