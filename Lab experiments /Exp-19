@@ -1,0 +1,29 @@
+import nltk
+
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+from nltk.wsd import lesk
+
+sentences = [
+    "I deposited money in the bank",
+    "He sat near the river bank",
+    "The player hit the ball with a bat"
+]
+
+words = ["bank", "bank", "bat"]
+
+print("WORD SENSE DISAMBIGUATION\n")
+
+for sentence, word in zip(sentences, words):
+    result = lesk(sentence.split(), word)
+
+    print("Sentence:", sentence)
+    print("Target Word:", word)
+
+    if result:
+        print("Meaning:", result.definition())
+    else:
+        print("Meaning: Not found")
+
+    print()
