@@ -1,0 +1,26 @@
+import spacy
+import nltk
+
+nltk.download('wordnet')
+
+from nltk.corpus import wordnet
+
+nlp = spacy.load("en_core_web_sm")
+
+text = "The intelligent student studies computer science."
+
+doc = nlp(text)
+
+print("INPUT SENTENCE:", text)
+print("\nNOUN PHRASE ANALYSIS:\n")
+
+for chunk in doc.noun_chunks:
+    print("Noun Phrase:", chunk.text)
+    print("Root Word:", chunk.root.text)
+
+    meanings = wordnet.synsets(chunk.root.text)
+
+    if meanings:
+        print("Meaning:", meanings[0].definition())
+
+    print()
