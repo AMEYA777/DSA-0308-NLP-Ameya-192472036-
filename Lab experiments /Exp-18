@@ -1,0 +1,19 @@
+import re
+
+expressions = [
+    "Human(x) AND Student(x)",
+    "Teacher(y) OR Professor(y)",
+    "Loves(x,y)",
+    "Student(x) AND Studies(x)",
+    "123 AND Human(x)"
+]
+
+pattern = r'^[A-Za-z]+\([a-z, ]+\)( (AND|OR|IMPLIES) [A-Za-z]+\([a-z, ]+\))*$'
+
+print("FOPC EXPRESSION VALIDATION\n")
+
+for exp in expressions:
+    if re.fullmatch(pattern, exp):
+        print(exp, "-> Valid Expression")
+    else:
+        print(exp, "-> Invalid Expression")
