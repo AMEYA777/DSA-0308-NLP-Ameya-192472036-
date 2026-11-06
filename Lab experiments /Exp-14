@@ -1,0 +1,30 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> SG SV | PL PV
+SG -> 'He' | 'She'
+PL -> 'They' | 'We'
+SV -> 'plays' | 'writes'
+PV -> 'play' | 'write'
+""")
+
+parser = nltk.ChartParser(grammar)
+
+sentences = [
+    "He plays",
+    "She writes",
+    "They play",
+    "We write",
+    "He play",
+    "They plays"
+]
+
+print("SUBJECT-VERB AGREEMENT CHECK\n")
+
+for sentence in sentences:
+    result = list(parser.parse(sentence.split()))
+
+    if result:
+        print(sentence, "-> Correct Agreement")
+    else:
+        print(sentence, "-> Incorrect Agreement")
