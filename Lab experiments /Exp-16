@@ -1,0 +1,20 @@
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+
+text = """
+Google was founded by Larry Page and Sergey Brin.
+It is located in California.
+Microsoft is another technology company.
+"""
+
+doc = nlp(text)
+
+print("INPUT TEXT:\n", text)
+print("\nNAMED ENTITIES:\n")
+
+for ent in doc.ents:
+    print("Entity:", ent.text)
+    print("Type:", ent.label_)
+    print("Description:", spacy.explain(ent.label_))
+    print()
