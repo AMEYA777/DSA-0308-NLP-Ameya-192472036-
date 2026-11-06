@@ -1,0 +1,34 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V NP
+Det -> 'the' | 'a'
+N -> 'boy' | 'apple'
+V -> 'eats' | 'likes'
+""")
+
+parser = nltk.EarleyChartParser(grammar)
+
+sentence = "the boy eats an apple".split()
+
+print("INPUT:", " ".join(sentence))
+
+# Use a grammar matching the input
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V NP
+Det -> 'the' | 'an'
+N -> 'boy' | 'apple'
+V -> 'eats' | 'likes'
+""")
+
+parser = nltk.EarleyChartParser(grammar)
+
+print("\nEARLEY PARSING RESULT:")
+
+for tree in parser.parse(sentence):
+    print(tree)
+    print("Parsing successful!")
