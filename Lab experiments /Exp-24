@@ -1,0 +1,38 @@
+def dialog_act(text):
+
+    text = text.lower()
+
+    if "hello" in text or "hi" in text:
+        return "Greeting"
+
+    elif "?" in text:
+        return "Question"
+
+    elif "thank" in text:
+        return "Thanking"
+
+    elif "bye" in text:
+        return "Goodbye"
+
+    elif "please" in text:
+        return "Request"
+
+    else:
+        return "Statement"
+
+
+dialogues = [
+    "Hello, how are you?",
+    "What is your name?",
+    "Thank you for helping me",
+    "Please help me",
+    "Python is easy to learn",
+    "Goodbye"
+]
+
+print("DIALOG ACT RECOGNITION\n")
+
+for dialogue in dialogues:
+    print("Dialogue:", dialogue)
+    print("Dialog Act:", dialog_act(dialogue))
+    print()
