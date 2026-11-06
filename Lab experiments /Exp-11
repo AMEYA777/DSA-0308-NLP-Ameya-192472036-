@@ -1,0 +1,21 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V NP
+Det -> 'the' | 'a'
+N -> 'student' | 'book'
+V -> 'reads' | 'writes'
+""")
+
+parser = nltk.ChartParser(grammar)
+
+sentence = "the student reads a book".split()
+
+print("INPUT SENTENCE:", " ".join(sentence))
+print("\nPARSE TREE:")
+
+for tree in parser.parse(sentence):
+    print(tree)
+    tree.pretty_print()
