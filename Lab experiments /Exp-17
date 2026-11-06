@@ -1,0 +1,16 @@
+import nltk
+
+nltk.download('wordnet')
+
+from nltk.corpus import wordnet
+
+words = ["book", "computer", "student"]
+
+for word in words:
+    print("\nWORD:", word)
+
+    synsets = wordnet.synsets(word)
+
+    for syn in synsets[:3]:
+        print("Meaning:", syn.definition())
+        print("Synonyms:", syn.lemma_names())
